@@ -4,14 +4,12 @@ var path = require('path');
 var passport = require('passport');
 
 router.get('/', function(req, res){
-  console.log('hit user get');
+  console.log('hit entries get');
 
-  var userInfo = {
-    first_name: req.user.name.first_name,
-    last_name: req.user.name.last_name,
-    libTechnology: req.user.libTechnology
+  var libInfo = {
+    libTechnology: req.user.libTechnology,
   };
-  res.send(userInfo);
+  res.send(libInfo);
 });//end get /
 
 module.exports = router;

@@ -3,12 +3,18 @@
   <head>
     <script src="./vendors/angular.min.js" charset="utf-8"></script>
     <script src="./scripts/homeClient.js" charset="utf-8"></script>
+    <script src="./scripts/factoryClient.js" charset="utf-8"></script>
     <title>LOGGED IN PAGE</title>
   </head>
   <body ng-app="myApp" ng-controller="homeController" ng-init="init();">
     <div>
       <h1>code_lib</h1>
       <h2>Welcome {{firstName | capitalize}} {{lastName | capitalize}}!</h2>
+
+      <h3>Technologies</h3>
+      <ul>
+        <li ng-repeat='tech in techCategory'>{{ tech }}</li>
+      </ul>
     </div>
   </body>
 </html>

@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
 var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
+var libraryRouter = require('./routes/library');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/home', homeRouter);
 app.use('/users', usersRouter);
+app.use('/library', libraryRouter);
 
 
 // server port set and listen
