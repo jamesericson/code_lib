@@ -2,11 +2,25 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 var SALT_WORK_FACTOR = 10;
-
+var EntrySchema = require('../models/entryModel').schema;
 
 var UserSchema = new Schema({
-  username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  email: { type:String, lowercase:true, unique: true },
+  name: { first_name: { type:String, lowercase:true },
+          last_name: { type:String, lowercase:true }
+        },
+  password: String,
+  following: [ Number ],
+  libTechnology: [
+                  { name: {type:String, index:true},
+                    subCategory:
+                                [
+                                 { name: {type:String, index:true},
+                                   entries: [ EntrySchema ]
+                                 }
+                               ]
+                  }
+                 ]
 });
 
 // Must encrypt, salt and hash the password

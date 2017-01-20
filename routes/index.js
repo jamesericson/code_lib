@@ -3,12 +3,16 @@ var path = require('path');
 var passport = require('passport');
 var router = express.Router();
 
+function lookIHitThePost(req, res, next) {
+    console.log('Hit the post!', req.body);
+    next();
+}
 router.get('/', function(req, res) {
   var indexPath = path.join(__dirname, '../public/views/index.html');
   res.sendFile(indexPath);
 });
 
-router.post('/', passport.authenticate('local'), function(req, res) {
+router.post('/', lookIHitThePost, passport.authenticate('local'), function(req, res) {
     res.sendStatus(200);
 });
 

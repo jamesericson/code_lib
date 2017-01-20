@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
 var homeRouter = require('./routes/home');
 
+
 var app = express();
 
 // middleware
