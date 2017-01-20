@@ -2,12 +2,13 @@
 <html>
   <head>
     <script src="./vendors/angular.min.js" charset="utf-8"></script>
-    <script src="./scripts/script.js" charset="utf-8"></script>
+    <script src="./scripts/homeClient.js" charset="utf-8"></script>
     <title>LOGGED IN PAGE</title>
   </head>
-  <body ng-app="myApp" ng-controller="homeController">
+  <body ng-app="myApp" ng-controller="homeController" ng-init="init();">
     <div>
-      <p>code lib</p>
+      <h1>code_lib</h1>
+      <h2>Welcome {{firstName | capitalize}} {{lastName | capitalize}}!</h2>
     </div>
   </body>
 </html>

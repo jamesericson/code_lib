@@ -17,13 +17,9 @@ myApp.controller('loginController',['$scope', '$http', '$window',
       data: userInfo
     }).then(function successCallback(response) {
       console.log(response);
-      alert('look!');
-
       $window.location.href = '/home';
     }, function errorCallback(error) {
       console.log('error', error);
-
-      // $window.location.href = '/';
     });
   };
 }]);// end loginController()
