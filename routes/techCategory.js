@@ -10,7 +10,7 @@ router.post('/', function(req, res){
   var user_id = req.user._id;
   var newCategory = {
     name: req.body.tech,
-    subCategory: []
+    subCategory: [{name: 'general', entries:[]}]
   };
 
   console.log('user_id/newCategory -> ', user_id, newCategory);

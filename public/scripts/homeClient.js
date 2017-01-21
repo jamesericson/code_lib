@@ -7,18 +7,18 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   $scope.techCategory = [];
   $scope.subCategory = [];
 
-  $scope.showSubCat = function(techIndex){
-    console.log('in showSubCat | with: ', techIndex );
-    // var techId = libFactory.library[techIndex]._id;
+  $scope.showSubCat = function(techIndex, techName){
+    console.log('in showSubCat | with: ', techIndex , techName);
+    $scope.selectedTech = libFactory.library[techIndex];
     $scope.subCategory = libFactory.getSubCat(techIndex);
   };// end showSubCat()
 
   $scope.addSubCat = function(){
     console.log('in addSubCat' );
-    var index = $scope.subTechIn;
-    var techId = libFactory.library[index]._id;
+    // var index = $scope.selectedTech.index;
+    // var techId = libFactory.library[index]._id;
     var toSend = {
-      techId: techId,
+      techId: $scope.selectedTech._id,
       sub: $scope.subIn
     };
     // console.log('toSend: ', toSend);

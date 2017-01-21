@@ -13,7 +13,7 @@
 
       <h3>Technologies</h3>
       <ul>
-        <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index);">{{ tech }}</p></li>
+        <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index, this.tech);">{{ tech }}</p></li>
       </ul>
       <div>
         <input ng-model="techIn" type="text" placeholder="Enter Technology">
@@ -24,7 +24,8 @@
         <li ng-repeat='sub in subCategory'><p ng-click="showEntries();">{{ sub }}</p></li>
       </ul>
       <div>
-        <select ng-model="subTechIn"><option ng-repeat="tech in techCategory" ng-value=$index >{{ tech }}</option></select>
+        <!-- <select ng-model="subTechIn"><option ng-repeat="tech in techCategory" ng-value=$index >{{ tech }}</option></select> -->
+        <div>{{selectedTech.name}}</div>
         <input ng-model="subIn" type="text" placeholder="Enter Sub Category">
         <input ng-click="addSubCat();" type="button" value="Add">
       </div>
