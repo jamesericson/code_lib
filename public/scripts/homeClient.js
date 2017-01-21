@@ -16,6 +16,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       console.log('success', response);
       $scope.firstName = response.data.first_name;
       $scope.lastName = response.data.last_name;
+      console.log('check this out: ', response.data.libTechnology);
       libFactory.library = response.data.libTechnology;
       $scope.techCategory = libFactory.getTechCat();
     }, function errorCallback(error) {
@@ -31,11 +32,28 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       url: '/library'
     }).then(function successCallback(response) {
       console.log('success', response);
-
+      libFactory.library = response.data.libTechnology;
+      $scope.techCategory = libFactory.getTechCat();
     }, function errorCallback(error) {
       console.log('error occurred!');
     }); // end http get
   }; // end getUserLib
+
+  $scope.addTechCat = function(){
+    console.log(' in addTechCat');
+
+    $http({
+      method: 'POST',
+      url: '/techCategory',
+      data: { tech: $scope.techIn }
+    }).then(function successCallback(response) {
+      console.log('success', response);
+      $scope.getUserLib();
+      $scope.techIn = '';
+    }, function errorCallback(error) {
+      console.log('error occurred!');
+    }); // end http post
+  };// end addTechCat()
 
   $scope.init = function(){
     $scope.getUserInfo();

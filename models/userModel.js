@@ -12,10 +12,10 @@ var UserSchema = new Schema({
   password: String,
   following: [ Number ],
   libTechnology: [
-                  { name: {type:String, index:true},
+                  { name: {type:String},
                     subCategory:
                                 [
-                                 { name: {type:String, index:true},
+                                 { name: {type:String},
                                    entries: [ EntrySchema ]
                                  }
                                ]

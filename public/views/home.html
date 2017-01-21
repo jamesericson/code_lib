@@ -15,6 +15,15 @@
       <ul>
         <li ng-repeat='tech in techCategory'>{{ tech }}</li>
       </ul>
+      <div>
+        <input ng-model="techIn" type="text" placeholder="Enter Technology">
+        <input ng-click="addTechCat();" type="button" value="Add">
+      </div>
+      <h3>Sub Categories</h3>
+
+      <h3>Entries</h3>
+
+
     </div>
   </body>
 </html>
