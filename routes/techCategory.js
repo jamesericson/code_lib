@@ -6,7 +6,7 @@ var User = require('../models/userModel');
 
 
 router.post('/', function(req, res){
-  console.log('hit entries get');
+  console.log('hit tech post');
   var user_id = req.user._id;
   var newCategory = {
     name: req.body.tech,

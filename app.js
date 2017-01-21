@@ -11,6 +11,7 @@ var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
 var libraryRouter = require('./routes/library');
 var techCatRouter = require('./routes/techCategory');
+var subCatRouter = require('./routes/subCategory');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/home', homeRouter);
 app.use('/users', usersRouter);
 app.use('/library', libraryRouter);
 app.use('/techCategory', techCatRouter)
+app.use('/subCategory', subCatRouter)
 
 
 // server port set and listen

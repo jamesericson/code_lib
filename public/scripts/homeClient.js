@@ -5,6 +5,38 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   console.log('inside home controller');
 
   $scope.techCategory = [];
+  $scope.subCategory = [];
+
+  $scope.showSubCat = function(techIndex){
+    console.log('in showSubCat | with: ', techIndex );
+    // var techId = libFactory.library[techIndex]._id;
+    $scope.subCategory = libFactory.getSubCat(techIndex);
+  };// end showSubCat()
+
+  $scope.addSubCat = function(){
+    console.log('in addSubCat' );
+    var index = $scope.subTechIn;
+    var techId = libFactory.library[index]._id;
+    var toSend = {
+      techId: techId,
+      sub: $scope.subIn
+    };
+    // console.log('toSend: ', toSend);
+    $http({
+      method: 'POST',
+      url: '/subCategory',
+      data: toSend
+    }).then(function successCallback(response) {
+      console.log('success', response);
+      $scope.getUserLib();
+      $scope.subIn = '';
+    }, function errorCallback(error) {
+      console.log('error occurred!');
+    }); // end http post
+
+  };// end addSubCat()
+
+
 
   $scope.getUserInfo = function(){
     console.log('in getUserInfo');

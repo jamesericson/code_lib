@@ -12,5 +12,15 @@ myApp.factory('libFactory', function(){
     return techList;
   };// end getTechCat()
 
+  myFactory.getSubCat = function(techIndex){
+    console.log('parsing out Subcategories | from: ', this.library);
+    var subCategories = this.library[techIndex].subCategory;
+    var subList = [];
+    for (var i = 0; i < subCategories.length; i++) {
+      subList.push(subCategories[i].name);
+    }; // end for
+    return subList;
+  };// end getSubCat()
+
   return myFactory;
 }); // end shelf Factory
