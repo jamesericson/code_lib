@@ -7,9 +7,51 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   $scope.techCategory = [];
   $scope.subCategory = [];
 
-  $scope.showSubCat = function(techIndex, techName){
-    console.log('in showSubCat | with: ', techIndex , techName);
+  $scope.showCodeEntry = function(){
+    console.log('hi!!');
+  };// end showCodeEntry()
+
+  $scope.addCodeEntry = function(){
+    console.log('in addCodeEntry');
+
+    var newEntry = {
+      techCategory: $scope.selectedTech._id,
+      subCategory: $scope.selectedSub._id,
+      name: $scope.codeNameIn,
+      syntax: $scope.syntaxIn,
+      gitHub: $scope.gitHubIn,
+      resourceOne: $scope.resourceOneIn,
+      resourceTwo: $scope.resourceTwoIn,
+      resourceThree: $scope.resourceThreeIn,
+      notes: $scope.notesIn
+    };
+
+    $http({
+      method: 'POST',
+      url: '/codeEntry',
+      data: newEntry
+    }).then( function(response){
+      console.log('back from the server, with:', response);
+      $scope.getUserLib(function () {
+        console.log('after a getUserLib');
+        $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, $scope.selectedSub.index);
+      });
+      //TODO clear some stuff
+    }); // end http
+
+  };// end addCodeEntry()
+
+  $scope.showCodeOpt = function(subIndex){
+    console.log('in showCodeOpt');
+    $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
+    $scope.selectedSub.index = subIndex;
+    $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
+  }; // end showCodeOpt()
+
+  $scope.showSubCat = function(techIndex){
+    console.log('in showSubCat | with: ', techIndex);
     $scope.selectedTech = libFactory.library[techIndex];
+    $scope.selectedTech.index = techIndex;
     $scope.subCategory = libFactory.getSubCat(techIndex);
   };// end showSubCat()
 
@@ -28,15 +70,15 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       data: toSend
     }).then(function successCallback(response) {
       console.log('success', response);
-      $scope.getUserLib();
+      $scope.getUserLib(function(){
+        $scope.subCategory = libFactory.getSubCat($scope.selectedTech.index);
+      });
       $scope.subIn = '';
     }, function errorCallback(error) {
       console.log('error occurred!');
     }); // end http post
 
   };// end addSubCat()
-
-
 
   $scope.getUserInfo = function(){
     console.log('in getUserInfo');
@@ -51,12 +93,13 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       console.log('check this out: ', response.data.libTechnology);
       libFactory.library = response.data.libTechnology;
       $scope.techCategory = libFactory.getTechCat();
+
     }, function errorCallback(error) {
       console.log('error occurred!');
     }); // end http get
   };// end getUserInfo()
 
-  $scope.getUserLib = function(){
+  $scope.getUserLib = function(callback){
     console.log('in getUseLib');
 
     $http({
@@ -66,6 +109,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       console.log('success', response);
       libFactory.library = response.data.libTechnology;
       $scope.techCategory = libFactory.getTechCat();
+      callback();
     }, function errorCallback(error) {
       console.log('error occurred!');
     }); // end http get

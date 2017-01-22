@@ -13,7 +13,7 @@
 
       <h3>Technologies</h3>
       <ul>
-        <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index, this.tech);">{{ tech }}</p></li>
+        <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index);">{{ tech }}</p></li>
       </ul>
       <div>
         <input ng-model="techIn" type="text" placeholder="Enter Technology">
@@ -21,17 +21,34 @@
       </div>
       <h3>Sub Categories</h3>
       <ul>
-        <li ng-repeat='sub in subCategory'><p ng-click="showEntries();">{{ sub }}</p></li>
+        <li ng-repeat='sub in subCategory'><p ng-click="showCodeOpt(this.$index);">{{ sub }}</p></li>
       </ul>
       <div>
-        <!-- <select ng-model="subTechIn"><option ng-repeat="tech in techCategory" ng-value=$index >{{ tech }}</option></select> -->
-        <div>{{selectedTech.name}}</div>
+        <div>in {{selectedTech.name}}</div>
         <input ng-model="subIn" type="text" placeholder="Enter Sub Category">
         <input ng-click="addSubCat();" type="button" value="Add">
       </div>
       <h3>Entries</h3>
-
-
+      <ul>
+        <li ng-repeat='code in codeList'><p ng-click="showCodeEntry();">{{ code }}</p></li>
+      </ul>
+      <div>
+        <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
+        <label for="codeName">Name:</label>
+        <input ng-model="codeNameIn" type="text" name="codeName" value="">
+      <br><label for="syntax">Syntax:</label>
+      <br><textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
+      <br><label for="gitHub">Git Hub URL:</label>
+        <input ng-model="gitHubIn" type="text" name="gitHub" value="">
+      <br><label for="resource">Resource URL:</label>
+      <br><input ng-model="resourceOneIn" type="text" name="resource" value="">
+      <br><input ng-model="resourceTwoIn" type="text" name="resource" value="">
+      <br><input ng-model="resourceThreeIn" type="text" name="resource" value="">
+      <br><label for="notes">Notes:</label>
+      <br><textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
+      <br><input ng-click="addCodeEntry();" type="button" value="Add">
+      </div>
+      <br><br><br><br><br><br><br><br><br><br>
     </div>
   </body>
 </html>

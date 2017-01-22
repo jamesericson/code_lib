@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var libraryRouter = require('./routes/library');
 var techCatRouter = require('./routes/techCategory');
 var subCatRouter = require('./routes/subCategory');
+var codeEntryRouter = require('./routes/codeEntry');
 
 var app = express();
 
@@ -39,7 +40,7 @@ app.use('/users', usersRouter);
 app.use('/library', libraryRouter);
 app.use('/techCategory', techCatRouter)
 app.use('/subCategory', subCatRouter)
-
+app.use('/codeEntry', codeEntryRouter)
 
 // server port set and listen
 var serverPort = process.env.port || 8080;
