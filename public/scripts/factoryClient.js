@@ -2,6 +2,10 @@
 myApp.factory('libFactory', function(){
   var myFactory = {};
   myFactory.library = [];
+  // maybe this below
+  // myFactory.currentTechIndex = 0;
+  // myFactory.currentSubIndex = 0;
+
 
   myFactory.getTechCat = function(){
     console.log('parsing out tech | from: ', this.library);
@@ -32,6 +36,7 @@ myApp.factory('libFactory', function(){
     console.log(codeList);
     return codeList;
   };//  end getCodeList()
+
 
   return myFactory;
 }); // end shelf Factory

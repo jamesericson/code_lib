@@ -4,51 +4,86 @@
     <script src="./vendors/angular.min.js" charset="utf-8"></script>
     <script src="./scripts/homeClient.js" charset="utf-8"></script>
     <script src="./scripts/factoryClient.js" charset="utf-8"></script>
-    <title>LOGGED IN PAGE</title>
+    <link rel="stylesheet" href="./style/master.css">
+    <title>code_lib logged in</title>
   </head>
   <body ng-app="myApp" ng-controller="homeController" ng-init="init();">
-    <div>
-      <h1>code_lib</h1>
-      <h2>Welcome {{firstName | capitalize}} {{lastName | capitalize}}!</h2>
+    <header>
+      <h1>Welcome {{firstName | capitalize}} {{lastName | capitalize}}!</h2>
+    </header>
 
-      <h3>Technologies</h3>
-      <ul>
-        <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index);">{{ tech }}</p></li>
-      </ul>
-      <div>
-        <input ng-model="techIn" type="text" placeholder="Enter Technology">
-        <input ng-click="addTechCat();" type="button" value="Add">
+    <main>
+      <div id="Nav" class="nav_column" >
+        <h1>code_lib</h1>
+
+        <h2>Technologies</h2>
+        <ul>
+          <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index);">{{ tech }}</p></li>
+        </ul>
+        <div class="add_field" >
+          <input ng-model="techIn" type="text" placeholder="Enter Technology">
+          <input ng-click="addTechCat();" type="button" value="Add">
+        </div>
       </div>
-      <h3>Sub Categories</h3>
-      <ul>
-        <li ng-repeat='sub in subCategory'><p ng-click="showCodeOpt(this.$index);">{{ sub }}</p></li>
-      </ul>
-      <div>
-        <div>in {{selectedTech.name}}</div>
-        <input ng-model="subIn" type="text" placeholder="Enter Sub Category">
-        <input ng-click="addSubCat();" type="button" value="Add">
+
+      <div id="subCategories" class="nav_column" >
+        <h2>Sub Categories</h2>
+        <ul>
+          <li ng-repeat='sub in subCategory'><p ng-click="showCodeOpt(this.$index);">{{ sub }}</p></li>
+        </ul>
+        <div class="add_field">
+          <div>in {{selectedTech.name}}</div>
+          <input ng-model="subIn" type="text" placeholder="Enter Sub Category">
+          <input ng-click="addSubCat();" type="button" value="Add">
+        </div>
       </div>
-      <h3>Entries</h3>
-      <ul>
-        <li ng-repeat='code in codeList'><p ng-click="showCodeEntry();">{{ code }}</p></li>
-      </ul>
-      <div>
-        <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
-        <label for="codeName">Name:</label>
-        <input ng-model="codeNameIn" type="text" name="codeName" value="">
-      <br><label for="syntax">Syntax:</label>
-      <br><textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
-      <br><label for="gitHub">Git Hub URL:</label>
-        <input ng-model="gitHubIn" type="text" name="gitHub" value="">
-      <br><label for="resource">Resource URL:</label>
-      <br><input ng-model="resourceOneIn" type="text" name="resource" value="">
-      <br><input ng-model="resourceTwoIn" type="text" name="resource" value="">
-      <br><input ng-model="resourceThreeIn" type="text" name="resource" value="">
-      <br><label for="notes">Notes:</label>
-      <br><textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
-      <br><input ng-click="addCodeEntry();" type="button" value="Add">
+
+      <div id="entryOpt" class="nav_column" >
+        <h2>Entries</h2>
+        <ul>
+          <li ng-repeat='code in codeList'><p ng-click="showCodeEntry(this.$index);">{{ code }}</p></li>
+        </ul>
+        <div class="add_field" >
+          <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
+          <label>Name:
+            <input ng-model="codeNameIn" type="text" name="codeName" value="">
+          </label>
+          <label>Syntax:
+            <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
+          </label>
+          <label>Git Hub URL:
+            <input ng-model="gitHubIn" type="text" name="gitHub" value="">
+          </label>
+          <label>Resource URL:
+            <input ng-model="resourceOneIn" type="text" name="resource" value="">
+            <input ng-model="resourceTwoIn" type="text" name="resource" value="">
+            <input ng-model="resourceThreeIn" type="text" name="resource" value="">
+          </label>
+          <label for="notes">Notes:
+            <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
+          </label>
+          <input ng-click="addCodeEntry();" type="button" value="Add">
+        </div>
       </div>
-      <br><br><br><br><br><br><br><br><br><br>
-    </div>
+
+      <div id="code-entry">
+        <h2>{{codeEntry.name}}</h2>
+        <label>Syntax
+          <pre>{{codeEntry.syntax}}</pre>
+        </label>
+        <label>Git Hub Project:</label>
+          <p><a ng-href={{codeEntry.gitHub}} target="_blank">{{ codeEntry.gitHub | onlyProjectName }}</a></p>
+        </label>
+        <label>Resources:
+          <p><a ng-href={{codeEntry.resourceOne}} target="_blank">{{ codeEntry.resourceOne | onlyWebSiteName }}</a></p>
+          <p><a ng-href={{codeEntry.resourceTwo}} target="_blank">{{ codeEntry.resourceTwo | onlyWebSiteName }}</a></p>
+          <p><a ng-href={{codeEntry.resourceThree}} target="_blank">{{ codeEntry.resourceThree | onlyWebSiteName }}</a></p>
+        </label>
+        <label>Notes:
+          <p>{{ codeEntry.notes }}</p>
+        </label>
+      </div>
+
+    </main>
   </body>
 </html>

@@ -6,9 +6,12 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.techCategory = [];
   $scope.subCategory = [];
+  $scope.codeEntry = {};
 
-  $scope.showCodeEntry = function(){
-    console.log('hi!!');
+  $scope.showCodeEntry = function(codeIndex){
+    console.log('in showCodeEntry | with index: ', codeIndex);
+    $scope.codeEntry = libFactory.library[$scope.selectedTech.index].subCategory[$scope.selectedSub.index].entries[codeIndex];
+    console.log('code: ', $scope.codeEntry);
   };// end showCodeEntry()
 
   $scope.addCodeEntry = function(){
@@ -36,7 +39,13 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
         console.log('after a getUserLib');
         $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, $scope.selectedSub.index);
       });
-      //TODO clear some stuff
+      $scope.codeNameIn = '';
+      $scope.syntaxIn = '';
+      $scope.gitHubIn = '';
+      $scope.resourceOneIn = '';
+      $scope.resourceTwoIn = '';
+      $scope.resourceThreeIn = '';
+      $scope.notesIn = '';
     }); // end http
 
   };// end addCodeEntry()
@@ -142,3 +151,35 @@ myApp.filter('capitalize', function() {
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     };
 }); // end filter capitalize
+
+myApp.filter('onlyProjectName', function() {
+    return function(input) {
+      if (!input)return;
+      var slashCounter = 0;
+      for (var i = 0; i < input.length; i++){
+        if ( input[i]=='/' ){
+          slashCounter ++;
+          if (slashCounter == 4)var beginning = i + 1 ;
+          if (slashCounter == 5)var end = i;
+        } // end if
+      } // end for
+
+      return input.slice(beginning, end);
+    };
+}); // end filter onlyProjectName
+
+myApp.filter('onlyWebSiteName', function() {
+    return function(input) {
+      if (!input)return;
+      var slashCounter = 0;
+      for (var i = 0; i < input.length; i++){
+        if ( input[i]=='/' ){
+          slashCounter ++;
+          if (slashCounter == 2)var beginning = i + 1 ;
+          if (slashCounter == 3)var end = i;
+        } // end if
+      } // end for
+
+      return input.slice(beginning, end);
+    };
+}); // end filter onlyProjectName
