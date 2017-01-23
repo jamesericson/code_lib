@@ -16,3 +16,14 @@ Jan 18,2017
 Add code bit functionality
 Main display of a selected code bit
 Edit functionality
+
+
+Jan 23, 2017
+* [ ] formate/style code-entry element
+* [ ] Show/not show elements
+* [ ] animate shows
+* [ ] add search bar/ results element
+* [ ] style edit/add element
+* [ ] make edit/add buttons func
+
+* [ ] make search func

@@ -4,6 +4,11 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   function($scope, libFactory, $http, $window) {
   console.log('inside home controller');
 
+  $scope.showEntryOpt = false;
+  $scope.showSubCat = false;
+  $scope.showCodeEntry = false;
+  $scope.showAddEntry = false;
+
   $scope.techCategory = [];
   $scope.subCategory = [];
   $scope.codeEntry = {};
