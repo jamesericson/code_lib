@@ -9,14 +9,15 @@
   </head>
   <body ng-app="myApp" ng-controller="homeController" ng-init="init();">
     <header>
-      <h1>Welcome {{firstName | capitalize}} {{lastName | capitalize}}!</h2>
+      <h1>_{{firstName | capitalize}} {{lastName | capitalize}}</h2>
     </header>
+    <div id="left-column"></div>
 
     <main>
-      <div id="Nav" class="nav_column" >
+      <div id="nav" class="nav_column" >
         <h1>code_lib</h1>
 
-        <h2>Technologies</h2>
+        <h2>Tech</h2>
         <ul>
           <li ng-repeat="tech in techCategory"><p ng-click="showSubCat(this.$index);">{{ tech }}</p></li>
         </ul>
@@ -26,47 +27,48 @@
         </div>
       </div>
 
-      <div id="subCategories" class="nav_column" >
+      <div id="sub-categories" class="nav_column" >
         <h2>Sub Categories</h2>
         <ul>
           <li ng-repeat='sub in subCategory'><p ng-click="showCodeOpt(this.$index);">{{ sub }}</p></li>
         </ul>
         <div class="add_field">
-          <div>in {{selectedTech.name}}</div>
+          <div id="in-tech">in {{selectedTech.name}}</div>
           <input ng-model="subIn" type="text" placeholder="Enter Sub Category">
           <input ng-click="addSubCat();" type="button" value="Add">
         </div>
       </div>
 
-      <div id="entryOpt" class="nav_column" >
+      <div id="entry-opt" class="nav_column" >
         <h2>Entries</h2>
         <ul>
           <li ng-repeat='code in codeList'><p ng-click="showCodeEntry(this.$index);">{{ code }}</p></li>
         </ul>
-        <div class="add_field" >
-          <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
-          <label>Name:
-            <input ng-model="codeNameIn" type="text" name="codeName" value="">
-          </label>
-          <label>Syntax:
-            <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
-          </label>
-          <label>Git Hub URL:
-            <input ng-model="gitHubIn" type="text" name="gitHub" value="">
-          </label>
-          <label>Resource URL:
-            <input ng-model="resourceOneIn" type="text" name="resource" value="">
-            <input ng-model="resourceTwoIn" type="text" name="resource" value="">
-            <input ng-model="resourceThreeIn" type="text" name="resource" value="">
-          </label>
-          <label for="notes">Notes:
-            <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
-          </label>
-          <input ng-click="addCodeEntry();" type="button" value="Add">
-        </div>
       </div>
 
-      <div id="code-entry">
+      <div ng-show="false" class="add_field" >
+        <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
+        <label>Name:
+          <input ng-model="codeNameIn" type="text" name="codeName" value="">
+        </label>
+        <label>Syntax:
+          <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
+        </label>
+        <label>Git Hub URL:
+          <input ng-model="gitHubIn" type="text" name="gitHub" value="">
+        </label>
+        <label>Resource URL:
+          <input ng-model="resourceOneIn" type="text" name="resource" value="">
+          <input ng-model="resourceTwoIn" type="text" name="resource" value="">
+          <input ng-model="resourceThreeIn" type="text" name="resource" value="">
+        </label>
+        <label for="notes">Notes:
+          <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
+        </label>
+        <input ng-click="addCodeEntry();" type="button" value="Add">
+      </div>
+
+      <div ng-show="true" id="code-entry">
         <h2>{{codeEntry.name}}</h2>
         <label>Syntax
           <pre>{{codeEntry.syntax}}</pre>

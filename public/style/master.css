@@ -2,16 +2,119 @@ html, body, h1, h2, h3, p, ul, li, a {
   padding: 0;
   border: 0;
   margin: 0;
-  font-size: 100%;
   font: inherit;
 }
 
+body{
+  background-color: #37393e;
+  font-size: 100%;
+  font-family: arial;
+}
+
 header {
-  background-color: #dddddd;
-  font-size: 20px;
+  background-color: white;
+  text-align: right;
+  font-size: 1.5rem;
+  padding: 5px;
 }
 
 main {
-  background-color: #222222;
   color: white;
+  padding: 1rem;
+  display:inline-flex;
+}
+
+main #nav {
+  background-color: #2d2f33;
+  width: 13rem;
+}
+
+#left-column {
+  position: absolute;
+  background-color: #2d2f33;
+  width: 14.1rem;
+  height: 100%;
+  border-right: 2px solid #4e4e4e;
+  z-index: -9999;
+}
+
+main #nav h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1rem;
+  border: 1px solid white;
+  padding: 1rem;
+}
+
+main #sub-categories {
+  width: 10rem;
+}
+
+main #in-tech {
+  color: purple;
+}
+
+main #entry-opt {
+  width: 8rem;
+}
+
+main .nav_column {
+  position: relative;
+  top: 5rem;
+  text-align: left;
+  border-right: 2px solid #4e4e4e;
+}
+
+main .nav_column:first-child {
+  top: 0;
+  text-align: center;
+  border: none
+}
+
+main .nav_column h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 70%;
+  margin: 4rem auto 2rem;
+  padding-bottom: 1rem;
+}
+
+main #nav h2 {
+  border-bottom: 2px solid #cddc39;
+}
+
+main .nav_column li {
+  list-style: none;
+  width: 50%;
+  margin: 1rem auto;
+}
+
+main .add_field {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main .add_field input {
+  color: white;
+  background-color: #444444;
+  border: 1px solid #4e4e4e;
+  border-radius: 3px;
+  text-align: center;
+}
+
+main #code-entry {
+  position: relative;
+  top: 13rem;
+  margin-left: 3rem;
+  background-color: #cecece;
+  color: black;
+  height: 300px;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+main #code-entry::first-line {
+  font-size: 160%;
+  font-weight: bold;
 }
