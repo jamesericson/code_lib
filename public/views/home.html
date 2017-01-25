@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="./vendors/angular.min.js" charset="utf-8"></script>
+    <script src="./vendors/angular-animate.min.js" charset="utf-8"></script>
     <script src="./scripts/homeClient.js" charset="utf-8"></script>
     <script src="./scripts/factoryClient.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./style/master.css">
@@ -27,7 +28,7 @@
         </div>
       </div>
 
-      <div ng-show="showSubCat" id="sub-categories" class="nav_column" >
+      <div id="sub-categories" class="nav_column" ng-class="{hide: hideSubCat}" >
         <h2>Sub Categories</h2>
         <ul>
           <li ng-repeat='sub in subCategory'><p ng-click="showCodeOpt(this.$index);">{{ sub }}</p></li>
@@ -39,14 +40,14 @@
         </div>
       </div>
 
-      <div ng-show="showEntryOpt" id="entry-opt" class="nav_column" >
+      <div ng-hide="initHideCode" id="entry-opt" class="nav_column" ng-class="{hide: hideCodeOpt}">
         <h2>Entries</h2>
         <ul>
           <li ng-repeat='code in codeList'><p ng-click="showCodeEntry(this.$index);">{{ code }}</p></li>
         </ul>
       </div>
 
-      <div ng-show="showAddEntry" class="add_field" >
+      <div ng-show="false" class="add_field" >
         <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
         <div>
           <label>Name:</label>
@@ -73,7 +74,7 @@
         <input ng-click="addCodeEntry();" type="button" value="Add">
       </div>
 
-      <div ng-show="showCodeEntry" id="code-entry">
+      <div ng-hide="hideCodeEntry" id="code-entry">
         <h2>{{codeEntry.name}}</h2>
         <div>
           <label>Syntax</label>

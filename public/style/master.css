@@ -27,6 +27,7 @@ main {
 main #nav {
   background-color: #2d2f33;
   width: 13rem;
+  z-index: 4;
 }
 
 #left-column {
@@ -35,7 +36,7 @@ main #nav {
   width: 14.1rem;
   height: 100%;
   border-right: 2px solid #4e4e4e;
-  z-index: -9999;
+  z-index: 3;
 }
 
 main #nav h1 {
@@ -44,10 +45,20 @@ main #nav h1 {
   margin: 1rem;
   border: 1px solid white;
   padding: 1rem;
+  z-index: 4;
 }
 
 main #sub-categories {
+  background-color: #37393e;
   width: 10rem;
+  border-right: 2px solid #4e4e4e;
+  right: -3px;
+  z-index: 2;
+  transition: right .3s;
+}
+
+main #sub-categories.hide {
+  right: 11rem;
 }
 
 main #in-tech {
@@ -55,14 +66,21 @@ main #in-tech {
 }
 
 main #entry-opt {
-  width: 8rem;
+  z-index: 1;
+  width: 9rem;
+  border-right: 2px solid #4e4e4e;
+  right: 0;
+  transition: right .3s;
+}
+
+main #entry-opt.hide {
+  right: 10rem;
 }
 
 main .nav_column {
   position: relative;
   top: 5rem;
   text-align: left;
-  border-right: 2px solid #4e4e4e;
 }
 
 main .nav_column:first-child {
@@ -77,6 +95,7 @@ main .nav_column h2 {
   width: 70%;
   margin: 4rem auto 2rem;
   padding-bottom: 1rem;
+
 }
 
 main #nav h2 {

@@ -1,20 +1,18 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngAnimate']);
 
 myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   function($scope, libFactory, $http, $window) {
   console.log('inside home controller');
 
-  $scope.showEntryOpt = false;
-  $scope.showSubCat = false;
-  $scope.showCodeEntry = false;
-  $scope.showAddEntry = false;
 
-  $scope.techCategory = [];
-  $scope.subCategory = [];
-  $scope.codeEntry = {};
+
+  $scope.toggleShow = function(){
+    return true;
+  }
 
   $scope.showCodeEntry = function(codeIndex){
     console.log('in showCodeEntry | with index: ', codeIndex);
+    $scope.hideCodeEntry = false;
     $scope.codeEntry = libFactory.library[$scope.selectedTech.index].subCategory[$scope.selectedSub.index].entries[codeIndex];
     console.log('code: ', $scope.codeEntry);
   };// end showCodeEntry()
@@ -57,6 +55,8 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.showCodeOpt = function(subIndex){
     console.log('in showCodeOpt');
+    $scope.hideCodeEntry = true;
+    $scope.hideCodeOpt = false;
     $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
     $scope.selectedSub.index = subIndex;
     $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
@@ -64,6 +64,10 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.showSubCat = function(techIndex){
     console.log('in showSubCat | with: ', techIndex);
+    setInterval(function(){ $scope.initHideCode = false; }, 35);
+    $scope.hideCodeEntry = true;
+    $scope.hideSubCat = false;
+    $scope.hideCodeOpt = true;
     $scope.selectedTech = libFactory.library[techIndex];
     $scope.selectedTech.index = techIndex;
     $scope.subCategory = libFactory.getSubCat(techIndex);
@@ -146,6 +150,10 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   };// end addTechCat()
 
   $scope.init = function(){
+    $scope.initHideCode = true;
+    $scope.hideCodeEntry = true;
+    $scope.hideSubCat = true;
+    $scope.hideCodeOpt = true;
     $scope.getUserInfo();
   };// end init()
 
@@ -188,3 +196,50 @@ myApp.filter('onlyWebSiteName', function() {
       return input.slice(beginning, end);
     };
 }); // end filter onlyProjectName
+
+//
+// //Since removed from HTML
+// slide-toggle="#sub-categories"
+// class="slidable"
+// //from http://jsfiddle.net/3sVz8/19/
+// myApp.directive('slideable', function () {
+//     return {
+//         restrict:'C',
+//         compile: function (element, attr) {
+//             // wrap tag
+//             var contents = element.html();
+//             element.html('<div class="slideable_content" style="margin:0 !important; padding:0 !important" >' + contents + '</div>');
+//
+//             return function postLink(scope, element, attrs) {
+//                 element.css({
+//                     'border': 'none',
+//                     'overflow': 'hidden',
+//                     'width': '0px',
+//                     'transitionProperty': 'width',
+//                     'transitionDuration': '.3s' ,
+//                     'transitionTimingFunction': 'ease-in-out'
+//                 });
+//             };
+//         }
+//     };
+// })
+// myApp.directive('slideToggle', function() {
+//     return {
+//         restrict: 'A',
+//         link: function(scope, element, attrs) {
+//             var target = document.querySelector(attrs.slideToggle);
+//             attrs.expanded = false;
+//             element.bind('click', function() {
+//                 var content = target.querySelector('.slideable_content');
+//                 if(!attrs.expanded) {
+//                     content.style.borderRight = '2px solid #4e4e4e';
+//                     target.style.width = '10rem';
+//                 } else {
+//                     content.style.borderRight = 'none';
+//                     target.style.width = '0px';
+//                 }
+//                 attrs.expanded = !attrs.expanded;
+//             });
+//         }
+//     }
+// });
