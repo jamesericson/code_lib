@@ -5,10 +5,18 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   console.log('inside home controller');
 
 
+  $scope.$watch('searchIn', function(newValue) {
+            if (newValue && newValue.length > 1){
+                $scope.searchBy = newValue;
+                $scope.hideSearchResults = false;
+                // $scope.hideCodeEntry = true;
+                $scope.hideCodeOpt = true;
+                $scope.hideSubCat = true;
 
-  $scope.toggleShow = function(){
-    return true;
-  }
+
+            }
+            // $scope.searchResults;
+        })
 
   $scope.showCodeEntry = function(codeIndex){
     console.log('in showCodeEntry | with index: ', codeIndex);
@@ -64,9 +72,9 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.showSubCat = function(techIndex){
     console.log('in showSubCat | with: ', techIndex);
-    setInterval(function(){ $scope.initHideCode = false; }, 35);
     $scope.hideCodeEntry = true;
     $scope.hideSubCat = false;
+    $scope.hideSearchResults = true;
     $scope.hideCodeOpt = true;
     $scope.selectedTech = libFactory.library[techIndex];
     $scope.selectedTech.index = techIndex;
@@ -110,6 +118,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
       $scope.lastName = response.data.last_name;
       console.log('check this out: ', response.data.libTechnology);
       libFactory.library = response.data.libTechnology;
+      $scope.searchResults = libFactory.createCodeArray();
       $scope.techCategory = libFactory.getTechCat();
 
     }, function errorCallback(error) {
@@ -126,6 +135,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     }).then(function successCallback(response) {
       console.log('success', response);
       libFactory.library = response.data.libTechnology;
+      $scope.searchResults = libFactory.createCodeArray();
       $scope.techCategory = libFactory.getTechCat();
       callback();
     }, function errorCallback(error) {
@@ -150,7 +160,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   };// end addTechCat()
 
   $scope.init = function(){
-    $scope.initHideCode = true;
+    $scope.hideSearchResults = true;
     $scope.hideCodeEntry = true;
     $scope.hideSubCat = true;
     $scope.hideCodeOpt = true;
@@ -196,50 +206,3 @@ myApp.filter('onlyWebSiteName', function() {
       return input.slice(beginning, end);
     };
 }); // end filter onlyProjectName
-
-//
-// //Since removed from HTML
-// slide-toggle="#sub-categories"
-// class="slidable"
-// //from http://jsfiddle.net/3sVz8/19/
-// myApp.directive('slideable', function () {
-//     return {
-//         restrict:'C',
-//         compile: function (element, attr) {
-//             // wrap tag
-//             var contents = element.html();
-//             element.html('<div class="slideable_content" style="margin:0 !important; padding:0 !important" >' + contents + '</div>');
-//
-//             return function postLink(scope, element, attrs) {
-//                 element.css({
-//                     'border': 'none',
-//                     'overflow': 'hidden',
-//                     'width': '0px',
-//                     'transitionProperty': 'width',
-//                     'transitionDuration': '.3s' ,
-//                     'transitionTimingFunction': 'ease-in-out'
-//                 });
-//             };
-//         }
-//     };
-// })
-// myApp.directive('slideToggle', function() {
-//     return {
-//         restrict: 'A',
-//         link: function(scope, element, attrs) {
-//             var target = document.querySelector(attrs.slideToggle);
-//             attrs.expanded = false;
-//             element.bind('click', function() {
-//                 var content = target.querySelector('.slideable_content');
-//                 if(!attrs.expanded) {
-//                     content.style.borderRight = '2px solid #4e4e4e';
-//                     target.style.width = '10rem';
-//                 } else {
-//                     content.style.borderRight = 'none';
-//                     target.style.width = '0px';
-//                 }
-//                 attrs.expanded = !attrs.expanded;
-//             });
-//         }
-//     }
-// });

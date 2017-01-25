@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div ng-hide="initHideCode" id="entry-opt" class="nav_column" ng-class="{hide: hideCodeOpt}">
+      <div id="entry-opt" class="nav_column" ng-class="{hide: hideCodeOpt}">
         <h2>Entries</h2>
         <ul>
           <li ng-repeat='code in codeList'><p ng-click="showCodeEntry(this.$index);">{{ code }}</p></li>
@@ -98,6 +98,14 @@
         </div>
       </div>
 
+      <div id="search-bar">
+        <input type="button" name="add" value="+">
+        <input ng-model="searchIn" ngtype="text" name="search" placeholder="Search...">
+      </div>
+      <div id="searchResults"  class="nav_column" ng-hide="hideSearchResults">
+        <h2>Searching for "{{searchIn}}"</h2>
+        <p  ng-repeat="results in searchResults | filter:{name: searchBy}">{{results.name}}</p>
+      </div>
     </main>
   </body>
 </html>

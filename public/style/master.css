@@ -54,11 +54,13 @@ main #sub-categories {
   border-right: 2px solid #4e4e4e;
   right: -3px;
   z-index: 2;
-  transition: right .3s;
+  opacity: 1;
+  transition: right .3s, opacity .3s;
 }
 
 main #sub-categories.hide {
   right: 11rem;
+  opacity: 0;
 }
 
 main #in-tech {
@@ -70,11 +72,14 @@ main #entry-opt {
   width: 9rem;
   border-right: 2px solid #4e4e4e;
   right: 0;
-  transition: right .3s;
+  opacity: 1;
+  transition: right .3s, opacity .3s;
+
 }
 
 main #entry-opt.hide {
   right: 10rem;
+  opacity: 0;
 }
 
 main .nav_column {
@@ -151,10 +156,15 @@ main #code-links-div {
 
 main #code-links-div .links {
   margin: .4rem 1.3rem;
-
 }
 
 main #code-entry label {
   color: #666666;
   font-size: .5rem;
+}
+
+main #search-bar {
+  position: absolute;
+  right: 1rem;
+  top: 3rem;
 }
