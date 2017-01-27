@@ -46,6 +46,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.addCodeEntry = function(){
     console.log('in addCodeEntry');
+    $scope.hideAddEdit = true;
 
     var newEntry = {
       techCategory: $scope.selectedTech._id,
@@ -187,6 +188,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     $scope.hideCodeEntry = true;
     $scope.hideSubCat = true;
     $scope.hideCodeOpt = true;
+    $scope.hideAddEdit = true;
     $scope.getUserInfo();
   };// end init()
 

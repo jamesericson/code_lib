@@ -222,7 +222,7 @@ main #add-edit-page {
   top: 0;
   width: 102%;
   height: 100%;
-  padding: 13rem 0 0 17%;
+  padding: 11rem 0 0 13%;
   margin-left: -2%;
 }
 
@@ -231,22 +231,12 @@ main #add-field {
   margin-left: 3rem;
   background-color: #cecece;
   color: black;
-  width: 700px;
-  height: 400px;
+  width: 800px;
+  height: 440px;
   border: 3px solid #666666;
   border-radius: 15px;
   padding: 30px;
 
-}
-
-main #add-field h2 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-main #add-field label {
-  color: white;
-  font-size: .5rem;
 }
 
 main #add-field ul {
@@ -266,4 +256,68 @@ main #add-field li {
 main #add-field li.selected {
   background: #666666;
   color: #dddddd;
+}
+
+main #add-field h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+main #add-field label {
+  color: #666666;
+  font-size: .8rem;
+}
+
+main #add-field div {
+  float: left;
+  margin-bottom: .5rem;
+}
+
+main #add-field input, label {
+  display: block;
+}
+
+main #add-field br {
+  clear: both;
+}
+
+main #add-field .inputsColumns {
+  border-top: 1px solid black;
+  padding-top: 1rem;
+  width: 50%;
+  font-size: 1.3rem;
+}
+
+main #add-field input {
+  line-height: 1rem;
+}
+
+main #name-in input {
+  width: 180px;
+}
+
+main #syntax-in textarea {
+  width: 360px;
+  height: 180px;
+}
+
+main .url_in input {
+  width: 270px;
+}
+
+main #notes-in textarea {
+  width: 380px;
+  height: 80px;
+}
+
+main #add-field .submitBtn {
+  display: inline-flex;
+  float: right;
+}
+
+main #add-field .submitBtn input {
+  background-color: #444444;
+  border: 1px solid #4e4e4e;
+  border-radius: 3px;
+  color: white;
 }

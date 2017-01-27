@@ -45,6 +45,9 @@
         <ul>
           <li ng-repeat='code in codeList'><p ng-click="showCodebyIndex(this.$index);">{{ code }}</p></li>
         </ul>
+        <div class="add_field">
+          <input ng-click="hideAddEdit = false;" type="button" value="Add">
+        </div>
       </div>
 
       <div ng-hide="hideAddEdit" id="add-edit-page" >
@@ -54,35 +57,50 @@
             <label>Select a Technology:</label>
             <ul ng-repeat="tech in techCategory" ng-click="setTechCat(this.$index);setSubCat(0);" >
               <li  ng-class="{selected: this.tech === selectedTech.name}" >{{ tech }}</li> </ul>
-          </div>
-          <div class="selectCat" >
-            <label>Select a Technology:</label>
+
+            <label>Select a Subcategory:</label>
             <ul ng-repeat="sub in subCategory" ng-click="setSubCat(this.$index);" >
               <li  ng-class="{selected: this.sub === selectedSub.name}" >{{ sub }} </p> </li> </ul>
           </div>
-          <div>
-            <label>Name:</label>
-            <input ng-model="codeNameIn" type="text" name="codeName" value="">
+          <br/>
+
+          <div class="inputsColumns">
+            <div id='name-in'>
+              <label>Name:</label>
+              <input ng-model="codeNameIn" type="text" name="codeName" value="">
+            </div>
+            <br/>
+            <div id="syntax-in">
+              <label>Syntax:</label>
+              <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
+            </div>
+            <br/>
+         </div>
+
+         <div class="inputsColumns">
+            <div class="url_in">
+              <label>Git Hub URL:</label>
+              <input ng-model="gitHubIn" type="text" name="gitHub" value="">
+            </div>
+            <br/>
+            <div  class="url_in" >
+              <label>Resource URL:</label>
+              <input ng-model="resourceOneIn" type="text" name="resource" value="">
+              <input ng-model="resourceTwoIn" type="text" name="resource" value="">
+              <input ng-model="resourceThreeIn" type="text" name="resource" value="">
+            </div>
+             <br/>
+            <div id=notes-in>
+              <label for="notes">Notes:</label>
+              <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
+            </div>
+            <br/>
+            <div class="submitBtn">
+              <input ng-click="addCodeEntry();" type="button" value="Submit">
+              <input ng-click="hideAddEdit = true;" type="button" value="Cancel"/>
+            </div>
+            <br/>
           </div>
-          <div>
-            <label>Syntax:</label>
-            <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
-          </div>
-          <div>
-            <label>Git Hub URL:</label>
-            <input ng-model="gitHubIn" type="text" name="gitHub" value="">
-          </div>
-          <div>
-            <label>Resource URL:</label>
-            <input ng-model="resourceOneIn" type="text" name="resource" value="">
-            <input ng-model="resourceTwoIn" type="text" name="resource" value="">
-            <input ng-model="resourceThreeIn" type="text" name="resource" value="">
-          </div>
-          <div>
-            <label for="notes">Notes:</label>
-            <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
-          </div>
-          <input ng-click="addCodeEntry();" type="button" value="Add">
         </div>
       </div>
 
