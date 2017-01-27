@@ -43,38 +43,47 @@
       <div id="entry-opt" class="nav_column" ng-class="{hide: hideCodeOpt}">
         <h2>Entries</h2>
         <ul>
-          <li ng-repeat='code in codeList'><p ng-click="showCodeEntry(this.$index);">{{ code }}</p></li>
+          <li ng-repeat='code in codeList'><p ng-click="showCodebyIndex(this.$index);">{{ code }}</p></li>
         </ul>
       </div>
 
-      <div ng-show="false" class="add_field" >
-        <div> in {{selectedSub.name}} of {{selectedTech.name}}</div>
-        <div>
-          <label>Name:</label>
-          <input ng-model="codeNameIn" type="text" name="codeName" value="">
+      <div ng-hide="hideAddEdit" id="add-edit-page" >
+        <div id="add_field">
+          <h2>Add Code</h2>
+          <ul ng-repeat="tech in techCategory" ng-click="setSubCat(this.$index);" >
+            <li  ng-class="{selected: this.tech === selectedTech.name}" >{{ tech }}</li> </ul>
+          <!-- <div>of {{selectedTech.name}}</div> -->
+          <br>
+          <ul><li ng-repeat="sub in subCategory" > <p ng-click="setSubCat(this.$index);"> {{ sub }} </p> </li> </ul>
+
+          <!-- <select><option ng-repeat="category in subCategory" value="">{{category}}</option></select> -->
+          <div>
+            <label>Name:</label>
+            <input ng-model="codeNameIn" type="text" name="codeName" value="">
+          </div>
+          <div>
+            <label>Syntax:</label>
+            <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
+          </div>
+          <div>
+            <label>Git Hub URL:</label>
+            <input ng-model="gitHubIn" type="text" name="gitHub" value="">
+          </div>
+          <div>
+            <label>Resource URL:</label>
+            <input ng-model="resourceOneIn" type="text" name="resource" value="">
+            <input ng-model="resourceTwoIn" type="text" name="resource" value="">
+            <input ng-model="resourceThreeIn" type="text" name="resource" value="">
+          </div>
+          <div>
+            <label for="notes">Notes:</label>
+            <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
+          </div>
+          <input ng-click="addCodeEntry();" type="button" value="Add">
         </div>
-        <div>
-          <label>Syntax:</label>
-          <textarea ng-model="syntaxIn" type="text" name="syntax" value=""></textarea>
-        </div>
-        <div>
-          <label>Git Hub URL:</label>
-          <input ng-model="gitHubIn" type="text" name="gitHub" value="">
-        </div>
-        <div>
-          <label>Resource URL:</label>
-          <input ng-model="resourceOneIn" type="text" name="resource" value="">
-          <input ng-model="resourceTwoIn" type="text" name="resource" value="">
-          <input ng-model="resourceThreeIn" type="text" name="resource" value="">
-        </div>
-        <div>
-          <label for="notes">Notes:</label>
-          <textarea ng-model="notesIn" type="text" name="notes" value=""></textarea>
-        </div>
-        <input ng-click="addCodeEntry();" type="button" value="Add">
       </div>
 
-      <div ng-hide="hideCodeEntry" id="code-entry">
+      <div ng-hide="hideCodeEntry" ng-class="{moveLeft: moveCodeLeft}" id="code-entry">
         <h2>{{codeEntry.name}}</h2>
         <div>
           <label>Syntax</label>
@@ -99,12 +108,14 @@
       </div>
 
       <div id="search-bar">
-        <input type="button" name="add" value="+">
+        <input ng-click="hideAddEdit = false;" type="button" name="add" value="+">
         <input ng-model="searchIn" ngtype="text" name="search" placeholder="Search...">
+        <p type="button" name="Log Out" >Log Out</p>
       </div>
-      <div id="searchResults"  class="nav_column" ng-hide="hideSearchResults">
-        <h2>Searching for "{{searchIn}}"</h2>
-        <p  ng-repeat="results in searchResults | filter:{name: searchBy}">{{results.name}}</p>
+
+      <div id="search-results" ng-class="{hide: hideSearchResults}">
+        <h2>Searching for: "{{searchIn}}"</h2>
+        <p  ng-repeat="results in searchResults | filter:{name: searchBy}" ng-click="showCode(this.results)" >{{results.name}}</p>
       </div>
     </main>
   </body>

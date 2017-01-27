@@ -137,6 +137,12 @@ main #code-entry {
   border: 3px solid #666666;
   border-radius: 15px;
   padding: 30px;
+  right: 0;
+  transition: right .3s;
+}
+
+main #code-entry.moveLeft {
+  right: 18rem;
 }
 
 main #code-entry::first-line {
@@ -164,7 +170,74 @@ main #code-entry label {
 }
 
 main #search-bar {
+  display: inline-flex;
   position: absolute;
+  right: 3rem;
+  top: 4rem;
+}
+
+main #search-bar input {
+  line-height: 1.8rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #444444;
+  border: 2px solid white;
+  border-radius: 25px;
+  margin: .3rem;
+  padding: 0 .6rem;
+}
+
+main #search-results {
+  position: absolute;
+  top: 10rem;
   right: 1rem;
-  top: 3rem;
+  height: 500px;
+  margin: 1rem;
+  padding: 1rem;
+  max-width: 12rem;
+  border-left: 2px solid #4e4e4e;
+  transition: right .3s, opacity .3s;
+}
+
+main #search-results h2 {
+  border-bottom: 1px solid #6161ff;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+main #search-results p {
+  margin-bottom: 1rem;
+}
+
+main #search-results.hide {
+  opacity: 0;
+  right: -5rem;
+}
+
+main #add-edit-page {
+  position: absolute;
+  background-color: rgba(36,36,49,0.7);
+  z-index: 8;
+  top: 0;
+  width: 102%;
+  height: 100%;
+  padding: 13rem 0 0 17%;
+  margin-left: -2%;
+}
+
+main #add_field {  position: relative;
+  margin-left: 3rem;
+  background-color: #cecece;
+  color: black;
+  width: 700px;
+  height: 400px;
+  border: 3px solid #666666;
+  border-radius: 15px;
+  padding: 30px;
+
+}
+
+main #add_field li.selected {
+  border: 1px solid lightblue;
 }

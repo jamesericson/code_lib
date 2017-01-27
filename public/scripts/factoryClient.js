@@ -40,6 +40,7 @@ myApp.factory('libFactory', function(){
 
   myFactory.createCodeArray = function(){
     console.log('in createCodeArray | lib: ', this.library);
+    this.allCodeEntries = [];
     for (var i = 0; i < this.library.length; i++) {
       var subCategory = this.library[i].subCategory;
       // console.log('sub: ', subCategory);
