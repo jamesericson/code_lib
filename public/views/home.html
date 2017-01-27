@@ -131,7 +131,7 @@
       <div id="search-bar">
         <input ng-click="hideAddEdit = false; clearAddEntryInputs();" type="button" name="add" value="+">
         <input ng-model="searchIn" ngtype="text" name="search" placeholder="Search...">
-        <p type="button" name="Log Out" >Log Out</p>
+        <p type="button" style="vertical-align: middle" ng-click="logout();" name="Log Out" >Log Out</p>
       </div>
 
       <div id="search-results" ng-class="{hide: hideSearchResults}">

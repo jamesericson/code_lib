@@ -14,4 +14,11 @@ router.get('/', function(req, res){
   res.send(userInfo);
 });//end get /
 
+router.get('/logout', function(req, res){
+  console.log('hit logout get');
+
+  req.logout();
+  res.sendStatus(200);
+})
+
 module.exports = router;

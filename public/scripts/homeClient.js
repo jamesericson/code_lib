@@ -182,6 +182,19 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     }); // end http post
   };// end addTechCat()
 
+  $scope.logout = function(){
+    $http({
+      method: 'GET',
+      url: '/users/logout',
+    }).then(function successCallback(response) {
+      console.log('success', response);
+      alert('You have Successfully Logged out!! \n\n ng-gofuckyourself!!!');
+      $window.location.href = '/';
+    }, function errorCallback(error) {
+      console.log('error occurred!');
+    }); // end http post
+  }
+
   $scope.init = function(){
     $scope.hideAddEdit = true;
     $scope.hideSearchResults = true;
