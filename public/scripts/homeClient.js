@@ -5,11 +5,18 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   console.log('inside home controller');
 
 
-  $scope.setSubCat = function(techIndex){
-    console.log('in setSubCat');
+  $scope.setTechCat = function(techIndex){
+    console.log('in setTechCat');
     $scope.selectedTech = libFactory.library[techIndex];
     $scope.selectedTech.index = techIndex;
     $scope.subCategory = libFactory.getSubCat(techIndex);
+  };// end setTechCat()
+
+  $scope.setSubCat = function(subIndex){
+    console.log('in setSubCat');
+    $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
+    $scope.selectedSub.index = subIndex;
+    $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
   };// end setSubCat()
 
   $scope.$watch('searchIn', function(newValue) {
@@ -78,9 +85,10 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     $scope.hideCodeEntry = true;
     $scope.moveCodeLeft = false;
     $scope.hideCodeOpt = false;
-    $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
-    $scope.selectedSub.index = subIndex;
-    $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
+    // $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
+    // $scope.selectedSub.index = subIndex;
+    // $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
+    $scope.setSubCat(subIndex);
   }; // end showCodeOpt()
 
   $scope.showSubCat = function(techIndex){
@@ -92,7 +100,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     $scope.hideCodeOpt = true;
     $scope.searchIn = '';
 
-    $scope.setSubCat(techIndex)
+    $scope.setTechCat(techIndex)
   };// end showSubCat()
 
   $scope.addSubCat = function(){

@@ -48,15 +48,18 @@
       </div>
 
       <div ng-hide="hideAddEdit" id="add-edit-page" >
-        <div id="add_field">
+        <div id="add-field">
           <h2>Add Code</h2>
-          <ul ng-repeat="tech in techCategory" ng-click="setSubCat(this.$index);" >
-            <li  ng-class="{selected: this.tech === selectedTech.name}" >{{ tech }}</li> </ul>
-          <!-- <div>of {{selectedTech.name}}</div> -->
-          <br>
-          <ul><li ng-repeat="sub in subCategory" > <p ng-click="setSubCat(this.$index);"> {{ sub }} </p> </li> </ul>
-
-          <!-- <select><option ng-repeat="category in subCategory" value="">{{category}}</option></select> -->
+          <div class="selectCat">
+            <label>Select a Technology:</label>
+            <ul ng-repeat="tech in techCategory" ng-click="setTechCat(this.$index);setSubCat(0);" >
+              <li  ng-class="{selected: this.tech === selectedTech.name}" >{{ tech }}</li> </ul>
+          </div>
+          <div class="selectCat" >
+            <label>Select a Technology:</label>
+            <ul ng-repeat="sub in subCategory" ng-click="setSubCat(this.$index);" >
+              <li  ng-class="{selected: this.sub === selectedSub.name}" >{{ sub }} </p> </li> </ul>
+          </div>
           <div>
             <label>Name:</label>
             <input ng-model="codeNameIn" type="text" name="codeName" value="">
@@ -117,6 +120,7 @@
         <h2>Searching for: "{{searchIn}}"</h2>
         <p  ng-repeat="results in searchResults | filter:{name: searchBy}" ng-click="showCode(this.results)" >{{results.name}}</p>
       </div>
+
     </main>
   </body>
 </html>

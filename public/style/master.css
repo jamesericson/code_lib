@@ -226,7 +226,8 @@ main #add-edit-page {
   margin-left: -2%;
 }
 
-main #add_field {  position: relative;
+main #add-field {
+  position: relative;
   margin-left: 3rem;
   background-color: #cecece;
   color: black;
@@ -238,6 +239,31 @@ main #add_field {  position: relative;
 
 }
 
-main #add_field li.selected {
-  border: 1px solid lightblue;
+main #add-field h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+main #add-field label {
+  color: white;
+  font-size: .5rem;
+}
+
+main #add-field ul {
+  display: inline-flex;
+  background-color: white;
+  margin-bottom: .5rem;
+}
+
+main #add-field li {
+  list-style: none;
+  background-color: #dddddd;
+  color: #666666;
+  margin: .5rem;
+  padding: .3rem;
+}
+
+main #add-field li.selected {
+  background: #666666;
+  color: #dddddd;
 }
