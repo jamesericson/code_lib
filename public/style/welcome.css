@@ -1,0 +1,80 @@
+html, body, h1, h2, h3, p, ul, li, a, pre {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font: inherit;
+}
+
+header {
+  background-color: #2d2f33;
+  width: 100%;
+  height: 9rem;
+  border-bottom: 2px solid #4e4e4e;
+  margin-bottom: 3rem;
+}
+
+body{
+  background-color: #37393e;
+  font-size: 100%;
+  font-family: arial;
+  color: white;
+}
+
+main {
+  display: flex;
+  width: 32rem;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  border: 1px solid white;
+  padding: 1rem;
+  width: 13rem;
+  margin: 6.5rem 3rem 0 -3rem ;
+}
+
+
+
+.form {
+  border-left: 2px solid white;
+  /*height: 17rem;*/
+  padding: 2rem 3rem 3rem;
+}
+
+
+
+.form h2 {
+  text-indent: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.form div {
+  margin-top: 1rem;
+}
+
+.form label {
+  font-size: .7rem;
+  color: #cccccc;
+}
+
+.form input {
+  width: 11rem;
+  border-radius: 3px;
+  line-height: 1.2rem;
+}
+
+.form .button {
+  background-color: #444444;
+  border: 2px solid white;
+  line-height: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: .3rem;
+}
+
+.form a {
+  color: #6161ff
+}

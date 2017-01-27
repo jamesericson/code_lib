@@ -46,7 +46,7 @@
           <li ng-repeat='code in codeList'><p ng-click="showCodebyIndex(this.$index);">{{ code }}</p></li>
         </ul>
         <div class="add_field">
-          <input ng-click="hideAddEdit = false;" type="button" value="Add">
+          <input ng-click="hideAddEdit = false; clearAddEntryInputs();" type="button" value="Add">
         </div>
       </div>
 
@@ -129,7 +129,7 @@
       </div>
 
       <div id="search-bar">
-        <input ng-click="hideAddEdit = false;" type="button" name="add" value="+">
+        <input ng-click="hideAddEdit = false; clearAddEntryInputs();" type="button" name="add" value="+">
         <input ng-model="searchIn" ngtype="text" name="search" placeholder="Search...">
         <p type="button" name="Log Out" >Log Out</p>
       </div>

@@ -4,35 +4,42 @@
     <title>Passport Lecture</title>
     <script src="./vendors/angular.min.js" charset="utf-8"></script>
     <script src="./scripts/registerClient.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/style/welcome.css">
   </head>
-    <body ng-app="myApp">
-      <h1>Register</h1>
-      <form ng-controller="registerController">
+    <body ng-app="myApp" ng-controller="registerController">
+      <header></header>
+      <main>
         <div>
-          <label for="email">Email Address:</label>
-          <input ng-model="emailIn" type="text" name="email" value="">
+          <h1>code_lib</h1>
         </div>
-        <div>
-          <label for="first">First Name:</label>
-          <input ng-model="firstNameIn" type="text" name="first" value="">
-        </div>
-        <div>
-          <label for="last">Last Name:</label>
-          <input ng-model="lastNameIn" type="text" name="last" value="">
-        </div>
-        <div>
-          <label for="password">Password:</label>
-          <input ng-model="passwordIn" type="text" name="password" value="">
-        </div>
-        <div>
-          <label for="repassword">Re-Enter Passoword:</label>
-          <input ng-model="repassIn" type="text" name="repassword" value="">
-        </div>
+        <div class="form">
+          <h2>Register</h2>
 
-        <div>
-          <input ng-click="registerUser()" type="submit" value="Register"/>
-          <input ng-click="cancel();" type="submit" value="Cancel"/>
-        </div>
-      </form>
+          <div>
+            <label for="email">Email Address:</label>
+            <input ng-model="emailIn" type="text" name="email" value="">
+          </div>
+          <div>
+            <label for="first">First Name:</label>
+            <input ng-model="firstNameIn" type="text" name="first" value="">
+          </div>
+          <div>
+            <label for="last">Last Name:</label>
+            <input ng-model="lastNameIn" type="text" name="last" value="">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input ng-model="passwordIn" type="text" name="password" value="">
+          </div>
+          <div>
+            <label for="repassword">Re-Enter Passoword:</label>
+            <input ng-model="repassIn" type="text" name="repassword" value="">
+          </div>
+
+          <div>
+            <input ng-click="registerUser()" class="button" type="submit" value="Register"/>
+            <input ng-click="cancel();" class="button" type="submit" value="Cancel"/>
+          </div>
+      </div>
   </body>
 </html>

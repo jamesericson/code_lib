@@ -4,21 +4,6 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
   function($scope, libFactory, $http, $window) {
   console.log('inside home controller');
 
-
-  $scope.setTechCat = function(techIndex){
-    console.log('in setTechCat');
-    $scope.selectedTech = libFactory.library[techIndex];
-    $scope.selectedTech.index = techIndex;
-    $scope.subCategory = libFactory.getSubCat(techIndex);
-  };// end setTechCat()
-
-  $scope.setSubCat = function(subIndex){
-    console.log('in setSubCat');
-    $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
-    $scope.selectedSub.index = subIndex;
-    $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
-  };// end setSubCat()
-
   $scope.$watch('searchIn', function(newValue) {
             if (newValue && newValue.length > 1){
                 $scope.searchBy = newValue;
@@ -30,19 +15,6 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
             }
             // $scope.searchResults;
         })
-
-  $scope.showCode = function(code){
-    console.log('click! code: ', code);
-    $scope.hideCodeEntry = false;
-    $scope.codeEntry = code;
-  };// end setIndexes
-
-  $scope.showCodebyIndex = function(codeIndex){
-    console.log('in showCodeEntry | with index: ', codeIndex);
-    $scope.hideCodeEntry = false;
-    $scope.codeEntry = libFactory.library[$scope.selectedTech.index].subCategory[$scope.selectedSub.index].entries[codeIndex];
-    console.log('code: ', $scope.codeEntry);
-  };// end showCodeEntry()
 
   $scope.addCodeEntry = function(){
     console.log('in addCodeEntry');
@@ -70,25 +42,53 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
         console.log('after a getUserLib');
         $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, $scope.selectedSub.index);
       });
-      $scope.codeNameIn = '';
-      $scope.syntaxIn = '';
-      $scope.gitHubIn = '';
-      $scope.resourceOneIn = '';
-      $scope.resourceTwoIn = '';
-      $scope.resourceThreeIn = '';
-      $scope.notesIn = '';
+      $scope.clearAddEntryInputs();
     }); // end http
 
   };// end addCodeEntry()
+
+  $scope.clearAddEntryInputs = function(){
+    $scope.codeNameIn = '';
+    $scope.syntaxIn = '';
+    $scope.gitHubIn = '';
+    $scope.resourceOneIn = '';
+    $scope.resourceTwoIn = '';
+    $scope.resourceThreeIn = '';
+    $scope.notesIn = '';
+  }; //end clearAddEntryInputs
+
+  $scope.setTechCat = function(techIndex){
+    console.log('in setTechCat');
+    $scope.selectedTech = libFactory.library[techIndex];
+    $scope.selectedTech.index = techIndex;
+    $scope.subCategory = libFactory.getSubCat(techIndex);
+  };// end setTechCat()
+
+  $scope.setSubCat = function(subIndex){
+    console.log('in setSubCat');
+    $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
+    $scope.selectedSub.index = subIndex;
+    $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
+  };// end setSubCat()
+
+  $scope.showCode = function(code){
+    console.log('click! code: ', code);
+    $scope.hideCodeEntry = false;
+    $scope.codeEntry = code;
+  };// end setIndexes
+
+  $scope.showCodebyIndex = function(codeIndex){
+    console.log('in showCodeEntry | with index: ', codeIndex);
+    $scope.hideCodeEntry = false;
+    $scope.codeEntry = libFactory.library[$scope.selectedTech.index].subCategory[$scope.selectedSub.index].entries[codeIndex];
+    console.log('code: ', $scope.codeEntry);
+  };// end showCodeEntry()
 
   $scope.showCodeOpt = function(subIndex){
     console.log('in showCodeOpt');
     $scope.hideCodeEntry = true;
     $scope.moveCodeLeft = false;
     $scope.hideCodeOpt = false;
-    // $scope.selectedSub = $scope.selectedTech.subCategory[subIndex];
-    // $scope.selectedSub.index = subIndex;
-    // $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, subIndex);
     $scope.setSubCat(subIndex);
   }; // end showCodeOpt()
 
