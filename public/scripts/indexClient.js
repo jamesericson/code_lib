@@ -20,6 +20,7 @@ myApp.controller('loginController',['$scope', '$http', '$window',
       $window.location.href = '/home';
     }, function errorCallback(error) {
       console.log('error', error);
+      if (error.data === 'Unauthorized')alert('Incorrect username or password.');
     });
   };
 }]);// end loginController()

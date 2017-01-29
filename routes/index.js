@@ -4,7 +4,7 @@ var passport = require('passport');
 var router = express.Router();
 
 function lookIHitThePost(req, res, next) {
-    console.log('Hit the post!', req.body);
+    console.log('Hit the post!');
     next();
 }
 router.get('/', function(req, res) {
