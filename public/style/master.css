@@ -5,6 +5,10 @@ html, body, h1, h2, h3, p, ul, li, a, pre {
   font: inherit;
 }
 
+li, input {
+  cursor: pointer;
+}
+
 body{
   background-color: #37393e;
   font-size: 100%;
@@ -151,7 +155,7 @@ main #code-entry::first-line {
 }
 
 main #code-syntax {
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
   border-radius: 5px;
   padding: .5rem;
 }
@@ -226,7 +230,7 @@ main #add-edit-page {
   margin-left: -2%;
 }
 
-main #add-field {
+main #add-edit-field {
   position: relative;
   margin-left: 3rem;
   background-color: #cecece;
@@ -239,56 +243,69 @@ main #add-field {
 
 }
 
-main #add-field ul {
+main #add-edit-field ul {
   display: inline-flex;
   background-color: white;
   margin-bottom: .5rem;
 }
 
-main #add-field li {
+main #add-edit-field li {
   list-style: none;
   background-color: #dddddd;
   color: #666666;
+  font-size: 1rem;
   margin: .5rem;
   padding: .3rem;
 }
 
-main #add-field li.selected {
+main #add-edit-field li.selected {
   background: #666666;
   color: #dddddd;
 }
 
-main #add-field h2 {
+main #add-edit-field h2 {
   font-size: 2rem;
   font-weight: bold;
 }
 
-main #add-field label {
+main #deleteCodeButton {
+  float: right;
+  margin-top: .6rem;
+  border: 1px solid white;
+  border-radius: 3px;
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  padding: .4rem;
+  z-index: 99;
+}
+
+main #add-edit-field label {
   color: #666666;
   font-size: .8rem;
 }
 
-main #add-field div {
+main #add-edit-field div {
   float: left;
   margin-bottom: .5rem;
 }
 
-main #add-field input, label {
+main #add-edit-field input, label {
   display: block;
 }
 
-main #add-field br {
+main #add-edit-field br {
   clear: both;
 }
 
-main #add-field .inputsColumns {
+main #add-edit-field .inputsColumns {
   border-top: 1px solid black;
   padding-top: 1rem;
   width: 50%;
   font-size: 1.3rem;
 }
 
-main #add-field input {
+main #add-edit-field input {
   line-height: 1rem;
 }
 
@@ -310,12 +327,12 @@ main #notes-in textarea {
   height: 80px;
 }
 
-main #add-field .submitBtn {
+main #add-edit-field .submitBtn {
   display: inline-flex;
   float: right;
 }
 
-main #add-field .submitBtn input {
+main #add-edit-field .submitBtn input {
   background-color: #444444;
   border: 1px solid #4e4e4e;
   border-radius: 3px;

@@ -16,6 +16,42 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
             // $scope.searchResults;
         })
 
+  $scope.displayEditCode = function(){
+    $scope.codeNameIn = $scope.codeEntry.name;
+    $scope.syntaxIn = $scope.codeEntry.syntax;
+    $scope.gitHubIn = $scope.codeEntry.gitHub;
+    $scope.resourceOneIn = $scope.codeEntry.resourceOne;
+    $scope.resourceTwoIn = $scope.codeEntry.resourceTwo;
+    $scope.resourceThreeIn = $scope.codeEntry.resourceThree;
+    $scope.notesIn = $scope.codeEntry.notes;
+
+    $scope.hideCodeEntry = true;
+    $scope.addOrEdit = false;
+    $scope.hideAddEdit = false;
+  };// end editCode()
+
+  $scope.displayAddCode = function(){
+    $scope.hideAddEdit = false
+    $scope.addOrEdit = true
+    $scope.clearAddEntryInputs();
+  };//end addCode()
+
+  $scope.deleteCodeEntry = function(code, getData){
+    console.log('in deleteCodeEntry | with: ', code);
+
+    $http({
+      method: 'DELETE',
+      url: '/codeEntry/' + code._id
+    }).then( function(response){
+      console.log('back from the server, with:', response);
+      if (getData)
+          $scope.getUserLib(function () {
+              $scope.codeList = libFactory.getCodeList($scope.selectedTech.index, $scope.selectedSub.index);
+            });
+    }); // end http
+
+  };//end deleteCodeEntry()
+
   $scope.addCodeEntry = function(){
     console.log('in addCodeEntry');
     $scope.hideAddEdit = true;
@@ -79,9 +115,11 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
 
   $scope.showCodebyIndex = function(codeIndex){
     console.log('in showCodeEntry | with index: ', codeIndex);
-    $scope.hideCodeEntry = false;
+
     $scope.codeEntry = libFactory.library[$scope.selectedTech.index].subCategory[$scope.selectedSub.index].entries[codeIndex];
     console.log('code: ', $scope.codeEntry);
+    document.getElementById("code-syntax").innerHTML = PR.prettyPrintOne($scope.codeEntry.syntax);
+    $scope.hideCodeEntry = false;
   };// end showCodeEntry()
 
   $scope.showCodeOpt = function(subIndex){
@@ -203,6 +241,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     $scope.hideCodeOpt = true;
     $scope.hideAddEdit = true;
     $scope.getUserInfo();
+
   };// end init()
 
 }]);// end mainController()
