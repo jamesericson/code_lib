@@ -112,12 +112,15 @@
       </div>
 
       <div ng-hide="hideCodeEntry" ng-class="{moveLeft: moveCodeLeft}" id="code-entry">
-        <h2>{{codeEntry.name}}</h2>
-        <input ng-click="displayEditCode();" type="button" value="Edit">
+        <div>
+          <input ng-click="displayEditCode();" type="button" value="Edit">
+          <h2>{{codeEntry.name}}</h2>
+        </div>
+        <br>
         <div>
           <label>Syntax</label>
           <!-- {{codeEntry.syntax}} -->
-          <pre class="prettyprint kwd" ><code id="code-syntax">nothing</code></pre>
+          <pre class="prettyprint kwd" ><code id="code-syntax"></code></pre>
         </div>
         <div id="code-links-div">
           <div class="links">

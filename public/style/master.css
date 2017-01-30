@@ -9,6 +9,10 @@ li, input {
   cursor: pointer;
 }
 
+br {
+  clear: both;
+}
+
 body{
   background-color: #37393e;
   font-size: 100%;
@@ -135,29 +139,42 @@ main #code-entry {
   position: relative;
   top: 13rem;
   margin-left: 3rem;
-  background-color: #cecece;
+  background-color: #eee;
   color: black;
   height: 300px;
-  border: 3px solid #666666;
+  border-bottom: 6px solid #999999;
   border-radius: 15px;
   padding: 30px;
   right: 0;
   transition: right .3s;
+  z-index: 99;
+  box-shadow: 0 0 35px #2d2f33;
 }
 
 main #code-entry.moveLeft {
   right: 18rem;
 }
 
-main #code-entry::first-line {
+main #code-entry h2 {
   font-size: 2rem;
   font-weight: bold;
 }
 
-main #code-syntax {
-  /*background-color: #eeeeee;*/
-  border-radius: 5px;
-  padding: .5rem;
+main #code-entry input {
+  float: right;
+  margin-top: .1rem;
+  border: 1px solid white;
+  border-radius: 3px;
+  background-color: 444444;
+  color: white;
+  font-size: 1rem;
+  padding: .4rem;
+}
+
+main .prettyprint {
+  border: none;
+  background-color: #FFF;
+  box-shadow: 0 0 25px #bbb;
 }
 
 main #code-links-div {
@@ -233,12 +250,11 @@ main #add-edit-page {
 main #add-edit-field {
   position: relative;
   margin-left: 3rem;
-  background-color: #cecece;
+  background-color: #dedede;
   color: black;
   width: 800px;
   height: 440px;
-  border: 3px solid #666666;
-  border-radius: 15px;
+  border-bottom: 6px solid #999999;  border-radius: 15px;
   padding: 30px;
 
 }
@@ -292,10 +308,6 @@ main #add-edit-field div {
 
 main #add-edit-field input, label {
   display: block;
-}
-
-main #add-edit-field br {
-  clear: both;
 }
 
 main #add-edit-field .inputsColumns {

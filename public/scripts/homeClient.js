@@ -17,6 +17,8 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
         })
 
   $scope.displayEditCode = function(){
+    $scope.hideCodeEntry = true;
+
     $scope.codeNameIn = $scope.codeEntry.name;
     $scope.syntaxIn = $scope.codeEntry.syntax;
     $scope.gitHubIn = $scope.codeEntry.gitHub;
@@ -25,13 +27,13 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     $scope.resourceThreeIn = $scope.codeEntry.resourceThree;
     $scope.notesIn = $scope.codeEntry.notes;
 
-    $scope.hideCodeEntry = true;
     $scope.addOrEdit = false;
     $scope.hideAddEdit = false;
   };// end editCode()
 
   $scope.displayAddCode = function(){
     $scope.hideAddEdit = false
+    $scope.hideCodeEntry = true;
     $scope.addOrEdit = true
     $scope.clearAddEntryInputs();
   };//end addCode()
@@ -111,7 +113,7 @@ myApp.controller('homeController',['$scope', 'libFactory', '$http', '$window',
     console.log('click! code: ', code);
     $scope.hideCodeEntry = false;
     $scope.codeEntry = code;
-  };// end setIndexes
+  };// end showCode()
 
   $scope.showCodebyIndex = function(codeIndex){
     console.log('in showCodeEntry | with index: ', codeIndex);
